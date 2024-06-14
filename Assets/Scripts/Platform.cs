@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    private Renderer _renderer;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<Renderer>();
+    }
+
     public Vector3 GetSize()
     {
-        return GetComponent<Renderer>().bounds.size;
+        return _renderer.bounds.size;
     }
 }

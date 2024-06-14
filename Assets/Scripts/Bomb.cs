@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Renderer))]
 
-public class Bomb : MonoBehaviour
+public class Bomb : MonoBehaviour, IDestroyable<Bomb>
 {
     private float _minFadeTime = 2f;
     private float _maxFadeTime = 5f;

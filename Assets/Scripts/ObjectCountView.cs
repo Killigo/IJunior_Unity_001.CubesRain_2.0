@@ -5,24 +5,19 @@ public class ObjectCountView : MonoBehaviour
 {
     [SerializeField] private Text _cubesInfo;
     [SerializeField] private Text _bombsInfo;
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private CubeSpawner _cubeSpawner;
+    [SerializeField] private BombSpawner _bombSpawner;
 
     private void OnEnable()
     {
-        _spawner.CubesCountChanged += OnCubesCountChanged;
-        _spawner.BombsCountChanged += OnBombsCountChanged;
-    }
-
-    private void LateUpdate()
-    {
-        transform.LookAt(Camera.main.transform);
-        transform.Rotate(0, 180, 0);
+        _cubeSpawner.CountChanged += OnCubesCountChanged;
+        _bombSpawner.CountChanged += OnBombsCountChanged;
     }
 
     private void OnDisable()
     {
-        _spawner.CubesCountChanged -= OnCubesCountChanged;
-        _spawner.BombsCountChanged -= OnBombsCountChanged;
+        _cubeSpawner.CountChanged -= OnCubesCountChanged;
+        _bombSpawner.CountChanged -= OnBombsCountChanged;
     }
 
     private void OnCubesCountChanged(int countCubes, int activeCubes)
